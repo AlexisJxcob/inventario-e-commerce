@@ -1,0 +1,4 @@
+db.driver=org.postgresql.Driver
+db.url=jdbc:postgresql://[TU_HOST]:6543/postgres
+db.user=[TU_USUARIO_COMPUESTO]
+db.password=[TU_CONTRASEÑA]
