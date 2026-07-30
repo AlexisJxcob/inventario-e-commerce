@@ -20,4 +20,9 @@ public class TiendaService {
         }
         productoDao.guardar(p);
     }
+
+    public List<Producto> obtenerCatalogo() {
+        return productoDao.listarTodos();
+    }
+
 }
