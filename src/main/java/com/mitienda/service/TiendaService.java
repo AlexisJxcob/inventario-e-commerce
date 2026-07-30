@@ -13,4 +13,11 @@ public class TiendaService {
         this.productoDao = new ProductoDaoImpl();
     }
 
+    public void registrarProducto(Producto p) {
+        if (p.getPrecio() <= 0) {
+            System.out.println("El precio debe ser mayor a 0.");
+            return;
+        }
+        productoDao.guardar(p);
+    }
 }
