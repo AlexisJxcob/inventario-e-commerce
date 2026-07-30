@@ -1,22 +1,14 @@
 package com.mitienda.main;
 
-import com.mitienda.repository.DatabaseConnection;
-import java.sql.Connection;
-import java.sql.SQLException;
+import com.mitienda.service.TiendaService;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Intentando conectar a tu base de datos de Supabase...");
+        TiendaService service = new TiendaService();
 
-        try (Connection con = DatabaseConnection.getConnection()) {
-            if (con != null && !con.isClosed()) {
-                System.out.println("=========================================");
-                System.out.println(" ¡CONEXIÓN EXITOSA CON SUPABASE! ");
-                System.out.println("=========================================");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error crítico de conexión:");
-            e.printStackTrace();
-        }
+        System.out.println("--- PROBANDO CONEXIÓN Y DATOS EN SUPABASE ---");
+
+        // Listar catálogo desde la base de datos
+        service.obtenerCatalogo().forEach(System.out::println);
     }
 }
