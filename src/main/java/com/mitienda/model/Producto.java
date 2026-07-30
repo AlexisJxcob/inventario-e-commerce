@@ -8,6 +8,9 @@ public class Producto {
     private int stock;
     private String categoria;
 
+    public Producto() {
+    }
+
     // constructor completo
     public Producto(Integer id, String nombre, Double precio, int stock, String categoria) {
         this.id = id;
@@ -25,7 +28,7 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // Getters y Setters
+    // Getters
     public Integer getId() {
         return id;
     }
@@ -40,10 +43,6 @@ public class Producto {
 
     public int getStock() {
         return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
     public String getCategoria() {
