@@ -25,4 +25,21 @@ public class TiendaService {
         return productoDao.listarTodos();
     }
 
+    public boolean procesarVenta(int idProducto, int cantidad) {
+        Producto p = productoDao.buscarPorId(idProducto);
+        if (p == null) {
+            System.out.println("Producto no encontrado.");
+            return false;
+        }
+
+        if (p.getStock() < cantidad) {
+            System.out.println("Stock insuficiente.");
+            return false;
+        }
+
+        p.setStock(p.getStock() - cantidad);
+        productoDao.actualizar(p);
+        System.out.println("Venta procesada con éxito.");
+        return true;
+    }
 }
