@@ -49,6 +49,10 @@ public class Producto {
         return categoria;
     }
 
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     // override
     @Override
     public String toString() {
