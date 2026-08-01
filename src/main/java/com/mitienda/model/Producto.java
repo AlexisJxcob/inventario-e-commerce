@@ -20,7 +20,7 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // constructor en caso de que sea libro nuevo s
+    // constructor en caso de que sea producto nuevo (sin id todavia)
     public Producto(String nombre, Double precio, int stock, Categoria categoria) {
         this.nombre = nombre;
         this.precio = precio;
@@ -41,20 +41,33 @@ public class Producto {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Double getPrecio() {
         return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     public int getStock() {
         return stock;
     }
 
-    public String getCategoria() {
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    // FIX: el campo es de tipo Categoria, no String — el getter debia devolver Categoria
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     // override

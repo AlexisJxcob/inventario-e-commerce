@@ -10,7 +10,7 @@ public enum Categoria {
     public static Categoria fromString(String s) {
         if (s == null) return OTRO;
         try {
-            return Categoria.valueOf(s.toUpperCase());
+            return Categoria.valueOf(s.trim().toUpperCase());
         } catch (IllegalArgumentException e) {
             return OTRO;
         }
