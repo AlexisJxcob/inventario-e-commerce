@@ -47,9 +47,6 @@ public class ProductoDaoImpl implements ProductoDao {
                         rs.getInt("stock"),
                         rs.getString("categoria")
                 );
-                // Asumiendo que Categoria es un enum en com.mitienda.model
-                // p.setCategoria(Categoria.valueOf(rs.getString("categoria")));
-
                 productos.add(p);
             }
 

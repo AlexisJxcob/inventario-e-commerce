@@ -41,3 +41,4 @@ build/
 .idea
 
 src/main/resources/database.properties
+.aider*
