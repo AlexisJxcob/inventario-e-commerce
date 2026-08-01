@@ -6,13 +6,13 @@ public class Producto {
     private String nombre;
     private Double precio;
     private int stock;
-    private String categoria;
+    private Categoria categoria;
 
     public Producto() {
     }
 
     // constructor completo
-    public Producto(Integer id, String nombre, Double precio, int stock, String categoria) {
+    public Producto(Integer id, String nombre, Double precio, int stock, Categoria categoria) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
@@ -21,7 +21,7 @@ public class Producto {
     }
 
     // constructor en caso de que sea libro nuevo s
-    public Producto(String nombre, Double precio, int stock, String categoria) {
+    public Producto(String nombre, Double precio, int stock, Categoria categoria) {
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -31,6 +31,10 @@ public class Producto {
     // Getters
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -45,7 +49,7 @@ public class Producto {
         return stock;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -56,6 +60,7 @@ public class Producto {
     // override
     @Override
     public String toString() {
-        return String.format("[%d] %s | Categoria: %s | $%.2f | Stock: %d", id, nombre, categoria, precio, stock);
+        return String.format("[%d] %s | Categoria: %s | $%.2f | Stock: %d",
+                id, nombre, categoria != null ? categoria.name() : "N/A", precio, stock);
     }
 }
