@@ -19,7 +19,8 @@ public class ProductoDaoImpl implements ProductoDao {
             stmt.setString(1, producto.getNombre());
             stmt.setDouble(2, producto.getPrecio());
             stmt.setInt(3, producto.getStock());
-            stmt.setString(4, producto.getCategoria()); // Guardamos el enum como texto
+            // FIX: getCategoria() ahora devuelve Categoria, no String -> convertimos con .name()
+            stmt.setString(4, producto.getCategoria().name());
 
             stmt.executeUpdate();
             System.out.println("✓ Producto guardado correctamente en Supabase.");
@@ -39,8 +40,6 @@ public class ProductoDaoImpl implements ProductoDao {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                // Mapeamos las filas de PostgreSQL a objetos Java
-                // En lugar de new Producto() y luego setters:
                 Producto p = new Producto(
                         rs.getInt("id"),
                         rs.getString("nombre"),
@@ -70,9 +69,9 @@ public class ProductoDaoImpl implements ProductoDao {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    producto = new Producto();
-                    // En lugar de new Producto() y luego setters:
-                    Producto p = new Producto(
+                    // FIX: antes se creaba "producto" vacio y se llenaba una variable "p" aparte
+                    // que nunca se asignaba de vuelta a "producto" -> el metodo siempre devolvia null.
+                    producto = new Producto(
                             rs.getInt("id"),
                             rs.getString("nombre"),
                             rs.getDouble("precio"),
@@ -99,7 +98,7 @@ public class ProductoDaoImpl implements ProductoDao {
             stmt.setString(1, producto.getNombre());
             stmt.setDouble(2, producto.getPrecio());
             stmt.setInt(3, producto.getStock());
-            stmt.setString(4, producto.getCategoria());
+            stmt.setString(4, producto.getCategoria().name());
             stmt.setInt(5, producto.getId());
 
             stmt.executeUpdate();
