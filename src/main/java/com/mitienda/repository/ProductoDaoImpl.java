@@ -1,5 +1,6 @@
 package com.mitienda.repository;
 
+import com.mitienda.model.Categoria;
 import com.mitienda.model.Producto;
 
 import java.sql.*;
@@ -45,7 +46,7 @@ public class ProductoDaoImpl implements ProductoDao {
                         rs.getString("nombre"),
                         rs.getDouble("precio"),
                         rs.getInt("stock"),
-                        rs.getString("categoria")
+                        Categoria.valueOf(rs.getString("categoria"))
                 );
                 productos.add(p);
             }
@@ -76,7 +77,7 @@ public class ProductoDaoImpl implements ProductoDao {
                             rs.getString("nombre"),
                             rs.getDouble("precio"),
                             rs.getInt("stock"),
-                            rs.getString("categoria")
+                            Categoria.valueOf(rs.getString("categoria"))
                     );
                 }
             }

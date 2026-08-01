@@ -49,7 +49,7 @@ public class Producto {
         return stock;
     }
 
-    public Categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
