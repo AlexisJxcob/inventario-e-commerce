@@ -14,7 +14,7 @@ public class TiendaService {
     }
 
     public void registrarProducto(Producto p) {
-        if (p.getPrecio() <= 0) {
+        if (p.getPrecio() == null || p.getPrecio() <= 0) {
             System.out.println("El precio debe ser mayor a 0.");
             return;
         }
